@@ -217,11 +217,6 @@ func getColumns(ctx context.Context, db *sqrlx.Wrapper, schema string, tableName
 	return cols, nil
 }
 
-func dump(obj interface{}) {
-	b, _ := json.MarshalIndent(obj, "", "  ")
-	fmt.Printf("==%T==\n%s\n\n", obj, string(b))
-}
-
 func mdDump(schema Schema) {
 
 	tpl, err := template.New("markdown.md").Funcs(template.FuncMap{
@@ -240,7 +235,7 @@ func mdDump(schema Schema) {
 			}
 			return strings.Join(words, " ")
 		},
-	}).ParseFiles("./templates/markdown.md")
+	}).Parse(defaultTemplate)
 
 	if err != nil {
 		panic(err.Error())
@@ -257,3 +252,35 @@ func mdDump(schema Schema) {
 type execData struct {
 	Data interface{}
 }
+defaultTemplate=`
+Tables
+======
+
+{{ range .Data.Tables }}
+{{ snakeToTitle .Name }}
+-----------
+
+{{ .Description }}
+
+| Name | Type | Description |
+|------|------|-------------|
+{{ range .Columns -}}
+| {{ .Name }} | {{ if .CustomType }}[{{.DataType}}](#{{anchor .DataType}}){{ else }}{{.DataType}}{{ end }} | {{ mdescape .Description}} |
+{{ end }}
+{{ end }}
+
+
+Enums
+=====
+
+{{ range .Data.Enums }}
+{{ snakeToTitle .Name }}
+-------------------------
+{{ if .Description }}
+{{ .Description }}
+{{ else }}
+{{ range .Values -}}
+- {{ . }}
+{{ end }}
+{{- end }}
+{{ end }}`
