@@ -252,7 +252,8 @@ func mdDump(schema Schema) {
 type execData struct {
 	Data interface{}
 }
-defaultTemplate=`
+
+var defaultTemplate = `
 Tables
 ======
 
