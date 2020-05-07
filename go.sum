@@ -9,3 +9,5 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.2.2 h1:bSDNvY7ZPG5RlJ8otE/7V6gMiyenm9RtJ7IUVIAoJ1w=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
+gopkg.daemonl.com/sqrlx v0.0.1 h1:H+r0q8UJbqMLub4RNcC/lg+ewU+JUNtzTA0C3ySLveE=
+gopkg.daemonl.com/sqrlx v0.0.1/go.mod h1:3pe7u8XJOEsr/pa/prqcNHwORuGCfLc/II+4V4BCQsU=
